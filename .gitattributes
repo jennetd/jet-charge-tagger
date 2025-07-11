@@ -1,0 +1,4 @@
+*.h5 filter=lfs diff=lfs merge=lfs -text
+*.awkd filter=lfs diff=lfs merge=lfs -text
+ternary_training/ filter=lfs diff=lfs merge=lfs -text
+preprocessing/ternary_training/ filter=lfs diff=lfs merge=lfs -text

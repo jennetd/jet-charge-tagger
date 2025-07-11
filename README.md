@@ -1,6 +1,8 @@
 # Jet Charge Tagger 
 
-A toolkit to train and utilize a dynamic graph convolutional neural network model named as the "jet charge tagger", to predict the electric charge of large-radius jets at the Large Hadron Collider. The model architecture is inspired by [ParticleNet](https://arxiv.org/abs/1902.08570).
+A toolkit to train and utilize a Dynamic Graph Convolutional Neural Network model named as the "jet charge tagger", to predict the electric charge of large-radius jets at the Large Hadron Collider. 
+
+The details about the tagger can be found in the official publication from the CMS Collaboration along with the approved results on the [CERN CDS server](https://cds.cern.ch/record/2904357/files/DP2024_044.pdf). The tagger's model architecture is inspired by [ParticleNet](https://arxiv.org/abs/1902.08570).
 
 -----
 ## Requirements

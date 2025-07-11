@@ -1,6 +1,6 @@
 # Jet Charge Tagger 
 
-A toolkit to train and apply a ParticleNet-based jet charge tagger.
+A toolkit to train and utilize a dynamic graph convolutional neural network model named as the "jet charge tagger", to predict the electric charge of large-radius jets at the Large Hadron Collider. The model architecture is inspired by [ParticleNet](https://arxiv.org/abs/1902.08570).
 
 -----
 ## Requirements
@@ -18,15 +18,15 @@ An activated conda environment, use the provided .yml to create the environment.
 1. Split ROOT Files
 Split input ROOT files into training, validation, and test sets using:
 
-```python preprocessing/split_rootfiles_manually.py
-```
+```python preprocessing/split_rootfiles_manually.py```
+
 This script preserves the original event ordering.
 
 2. Convert and Prepare Input Data
 Convert the ROOT files and compute input features using:
 
-```python preprocessing/convert_root_files.py
-```
+```python preprocessing/convert_root_files.py```
+
 This script performs the following:
 
 Converts ROOT files to .h5, then converts .h5 to .awkd. It also computes derived features like jet\_pt, jet\_mass, etc.
@@ -41,11 +41,11 @@ To classify jets using a trained model, run:
 
 This will load a trained model from ternary_training/ and predict the probability for a jet to be:
 
-W+-like (charge +1)
+W+ -like (charge +1)
 
-W--like (charge -1)
+W- -like (charge -1)
 
-Z-like (neutral)
+Z -like (neutral)
 
 You can modify the script to store predictions back into ROOT files.
 ROOT I/O utilities are included in the repository.

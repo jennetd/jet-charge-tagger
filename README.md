@@ -5,26 +5,23 @@ A toolkit to train and utilize a Dynamic Graph Convolutional Neural Network mode
 The details about the tagger can be found in the official publication from the CMS Collaboration along with the approved results on the [CERN CDS server](https://cds.cern.ch/record/2904357/files/DP2024_044.pdf). The tagger's model architecture is inspired by [ParticleNet](https://arxiv.org/abs/1902.08570).
 
 -----
-## Requirements
+## Input requirements
 
-A ROOT file containing exactly one jet per event. For training, each jet must have a true label corresponding to it's electric charge.
-
-For each jet, the file must have:
-
-Lorentz vector of particle constituents: Px, Py, Pz, E and electric charge q of the particle constituents, stored in a separate branch
-
-An activated conda environment, use the provided .yml to create the environment.
+A ROOT file containing exactly one jet per event. For training, each jet must have a true label corresponding to it's true electric charge.
+For each jet, the file must have the Lorentz vector of particle constituents: Px, Py, Pz, E and electric charge q of the particle constituents, stored in separate branches. In addition, an activated conda environment is required, use the provided .yml to create the environment.
 
 ### Workflow
 
-1. Split ROOT Files
+1. Split ROOT files
+
 Split input ROOT files into training, validation, and test sets using:
 
 ```python preprocessing/split_rootfiles_manually.py```
 
 This script preserves the original event ordering.
 
-2. Convert and Prepare Input Data
+2. Convert and prepare input data
+
 Convert the ROOT files and compute input features using:
 
 ```python preprocessing/convert_root_files.py```
@@ -36,7 +33,8 @@ The .awkd files will be saved in a directory such as:
 
 ```preprocessing/ternary_training/```
 
-3. Run Predictions
+3. Run predictions
+
 To classify jets using a trained model, run:
 
 ```python keras_predict_multi.py```
@@ -52,8 +50,9 @@ Z -like (neutral)
 You can modify the script to store predictions back into ROOT files.
 ROOT I/O utilities are included in the repository.
 
-4. Retrain the Model
-To retrain the tagger with your own data:
+4. Retrain the model
+
+To retrain the tagger with your own data use:
 
 ```python keras_train_multi.py```
 

@@ -1,5 +1,6 @@
-# ********************************* Author: Komal Tauqeer ********************************************
-# ********************************* Date: October 20, 2024 *******************************************
+# Copyright (c) 2025 Komal Tauqeer
+# Licensed under the MIT License. See LICENSE file for details.
+
 # Purpose: Split the input root files into 3 parts train, val, test in ratio 60:20:20. This is to keep track of events used for training and validation. One can split using this file, if they are not interested in doing re-training
 
 import sys

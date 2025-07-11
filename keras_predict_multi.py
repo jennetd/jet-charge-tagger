@@ -1,5 +1,6 @@
-# ******************************************** Author: Komal Tauqeer *******************************************
-# ***************************************** Date: July 11, 2025 ***********************************
+# Copyright (c) 2025 Komal Tauqeer
+# Licensed under the MIT License. See LICENSE file for details.
+#
 # The jet charge tagger is trained for individual UL years, use UL18 as default year because it had the most statistics for the training
 # The tagger gives output probabilites of a jet to belong to each class in the order W+, W-, and Z OR (+1, -1, 0) in terms of the electric charge
 

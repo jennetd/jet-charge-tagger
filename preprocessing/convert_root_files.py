@@ -1,5 +1,5 @@
-# ***************************************** Author: Komal Tauqeer *************************************
-# *************************************** Date: July 11th 2025 ***************************************
+# Copyright (c) 2025 Komal Tauqeer
+# Licensed under the MIT License. See LICENSE file for details.
 
 # Activate vir env: conda activate tf_py36 (the env yml file can be found here: /work/ktauqeer/jet-charge-tagger)
 # Purpose: convert splitted root files to hdf5 format, then convert them into .awkd format while also calculating tagger input variables

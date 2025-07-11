@@ -1,3 +1,6 @@
+# Copyright (c) 2019 Huilin Qu
+# Licensed under the MIT License. See LICENSE_old file for details.
+
 import tensorflow as tf
 from tensorflow import keras
 

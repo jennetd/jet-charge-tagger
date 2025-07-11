@@ -1,5 +1,5 @@
-# ************************************************** Author: Komal Tauqeer ***********************************************
-# *************************************************  Date: October 20, 2024 *********************************************
+# Copyright (c) 2025 Komal Tauqeer
+# Licensed under the MIT License. See LICENSE file for details.
 
 import uproot4
 import pandas as pd

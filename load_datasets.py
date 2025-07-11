@@ -1,3 +1,7 @@
+# Copyright (c) 2025 Komal Tauqeer
+# Licensed under the MIT License. See LICENSE file for details.
+
+
 import numpy as np
 #import awkward0
 import awkward

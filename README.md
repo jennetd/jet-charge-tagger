@@ -60,3 +60,12 @@ The best model will be saved in the ternary_training/model_checkpoints.
 
 Training curves will be saved as PDF files for visual inspection.
 
+## License
+
+This repository contains code under multiple licenses:
+
+- The model architecture code is adapted from [ParticleNet](https://arxiv.org/abs/1902.08570), and is licensed under the [MIT License](LICENSE_ORIGINAL).
+- All other code (training scripts, data processing, utilities etc.) is © 2025 Komal Tauqeer, and is licensed under the [MIT License](LICENSE_NEW).
+
+See the respective LICENSE files for more details.
+

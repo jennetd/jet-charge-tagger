@@ -1,5 +1,5 @@
-# ****************************************************** Author: Komal Tauqeer ***************************************
-# *************************************************** Date: July 1st 2025 *******************************************
+# Copyright (c) 2025 Komal Tauqeer
+# Licensed under the MIT License. See LICENSE file for details.
 
 import os
 import sys

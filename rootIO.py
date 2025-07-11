@@ -1,5 +1,5 @@
-# ********************************************** Author: Komal Tauqeer *******************************
-# ************************************** Date: November 1st 2024 *******************************
+# Copyright (c) 2025 Komal Tauqeer
+# Licensed under the MIT License. See LICENSE file for details.
 
 # imports from standard python
 from __future__ import print_function

@@ -1,2 +1,61 @@
-# jet-charge-tagger
-A dynamic graph convolutional neural network model inspired by ParticleNet to identify the electric charge of large-radius jets at the LHC
+# Jet Charge Tagger 
+
+A toolkit to train and apply a ParticleNet-based jet charge tagger.
+
+-----
+## Requirements
+
+A ROOT file containing exactly one jet per event. For training, each jet must have a true label corresponding to it's electric charge.
+
+For each jet, the file must have:
+
+Lorentz vector of particle constituents: Px, Py, Pz, E and electric charge q of the particle constituents, stored in a separate branch
+
+An activated conda environment, use the provided .yml to create the environment.
+
+### Workflow
+
+1. Split ROOT Files
+Split input ROOT files into training, validation, and test sets using:
+
+```python preprocessing/split_rootfiles_manually.py
+```
+This script preserves the original event ordering.
+
+2. Convert and Prepare Input Data
+Convert the ROOT files and compute input features using:
+
+```python preprocessing/convert_root_files.py
+```
+This script performs the following:
+
+Converts ROOT files to .h5, then converts .h5 to .awkd. It also computes derived features like jet\_pt, jet\_mass, etc.
+The .awkd files will be saved in a directory such as:
+
+```preprocessing/ternary_training/```
+
+3. Run Predictions
+To classify jets using a trained model, run:
+
+```python keras_predict_multi.py```
+
+This will load a trained model from ternary_training/ and predict the probability for a jet to be:
+
+W+-like (charge +1)
+
+W--like (charge -1)
+
+Z-like (neutral)
+
+You can modify the script to store predictions back into ROOT files.
+ROOT I/O utilities are included in the repository.
+
+4. Retrain the Model
+To retrain the tagger with your own data:
+
+```python keras_train_multi.py```
+
+The best model will be saved in the ternary_training/model_checkpoints.
+
+Training curves will be saved as PDF files for visual inspection.
+

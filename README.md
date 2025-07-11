@@ -12,7 +12,7 @@ For each jet, the file must have the Lorentz vector of particle constituents: Px
 
 ### Workflow
 
-1. Split ROOT files
+1. **Split ROOT files**
 
 Split input ROOT files into training, validation, and test sets using:
 
@@ -20,7 +20,7 @@ Split input ROOT files into training, validation, and test sets using:
 
 This script preserves the original event ordering.
 
-2. Convert and prepare input data
+2. **Convert and prepare input data**
 
 Convert the ROOT files and compute input features using:
 
@@ -33,7 +33,7 @@ The .awkd files will be saved in a directory such as:
 
 ```preprocessing/ternary_training/```
 
-3. Run predictions
+3. **Run predictions**
 
 To classify jets using a trained model, run:
 
@@ -50,7 +50,7 @@ Z -like (neutral)
 You can modify the script to store predictions back into ROOT files.
 ROOT I/O utilities are included in the repository.
 
-4. Retrain the model
+4. **Retrain the model**
 
 To retrain the tagger with your own data use:
 

@@ -25,7 +25,7 @@ The .awkd files will be saved in a directory such as:
 
 ```preprocessing/ternary_training/```
 
-3. **Run predictions**
+2. **Run predictions**
 
 To classify jets using a trained model, run:
 
@@ -42,7 +42,7 @@ Z -like (neutral)
 You can modify the script to store predictions back into ROOT files.
 ROOT I/O utilities are included in the repository.
 
-4. **Retrain the model**
+3. **[Optional] Retrain the model**
 
 To retrain the tagger with your own data use:
 

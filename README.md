@@ -12,15 +12,7 @@ For each jet, the file must have the Lorentz vector of particle constituents: Px
 
 ### Workflow
 
-1. **Split ROOT files**
-
-Split input ROOT files into training, validation, and test sets using:
-
-```python preprocessing/split_rootfiles_manually.py```
-
-This script preserves the original event ordering.
-
-2. **Convert and prepare input data**
+1. **Convert and prepare input data**
 
 Convert the ROOT files and compute input features using:
 

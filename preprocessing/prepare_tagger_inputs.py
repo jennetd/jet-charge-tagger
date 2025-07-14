@@ -42,18 +42,26 @@ def _transform(dataframe, mode, start=0, stop=-1, jet_size=0.8):
 
     # outputs
     old_label = df['lep_charge']
-    if mode == "binary":
-        new_label = [[1,0] if i == -1 else [0,1] for i in old_label]
-        new_label = np.array(new_label)
-        print (new_label)
-        v['label'] = new_label
-    elif mode == "multi":   
-        new_label = []
-        for i in old_label:
-            if i == -1: new_label.append([1,0,0])
-            if i == 1:new_label.append([0,1,0])
-            if i == 0: new_label.append( [0,0,1])
-        v['label'] = np.array(new_label)
+    #if mode == "binary":
+    #    new_label = [[1,0] if i == -1 else [0,1] for i in old_label]
+    #    new_label = np.array(new_label)
+    #    print (new_label)
+    #    v['label'] = new_label
+    #elif mode == "ternary":   
+    #    new_label = []
+    #    for i in old_label:
+    #        if i == -1: new_label.append([1,0,0])
+    #        if i == 1:new_label.append([0,1,0])
+    #        if i == 0: new_label.append( [0,0,1])
+    #    v['label'] = np.array(new_label)
+    
+    new_label = []
+    for i in old_label:
+        if i == -1: new_label.append([1,0,0])
+        if i == 1:new_label.append([0,1,0])
+        if i == 0: new_label.append( [0,0,1])
+    
+    v['label'] = np.array(new_label)
 
     v['event_weight'] = df['event_weight'].values
     v['jet_pt'] = jet_p4.pt

@@ -3,7 +3,6 @@
 
 
 import numpy as np
-#import awkward0
 import awkward
 import logging
 logging.basicConfig(level=logging.INFO, format='[%(asctime)s] %(levelname)s: %(message)s')
@@ -29,8 +28,8 @@ class Dataset(object):
         self.feature_dict = feature_dict
         if len(feature_dict)==0:
             feature_dict['points'] = ['part_etarel', 'part_phirel']
-            feature_dict['features'] = ['part_pt_log', 'part_e_log', 'part_etarel', 'part_phirel', 'part_charge', 'part_deltaR']
-            #feature_dict['features'] = ['part_pt_log', 'part_e_log', 'part_logerel', 'part_logptrel', 'part_charge', 'part_deltaR']
+            #feature_dict['features'] = ['part_pt_log', 'part_e_log', 'part_etarel', 'part_phirel', 'part_charge', 'part_deltaR']
+            feature_dict['features'] = ['part_pt_log', 'part_e_log', 'part_logerel', 'part_logptrel', 'part_charge', 'part_deltaR']
             feature_dict['mask'] = ['part_pt_log']
         self.label = label
         self.weight = weight

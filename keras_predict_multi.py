@@ -15,7 +15,6 @@ from load_datasets import Dataset
 from array import array
 from ROOT import *
 import rootIO
-from constants import *
 
 parser = optparse.OptionParser()
 parser.add_option("--year", dest="year", default= "UL18")
@@ -25,7 +24,7 @@ year = options.year
 def load_model():
 
     modelnumber = {"UL16preVFP": 30, "UL16postVFP": 30, "UL17": 30, "UL18": 29}
-    modelpath = "/work/ktauqeer/ParticleNet/tf-keras/preprocessing/JetChargeTagger/ternary_training/{}/model_checkpoints/particle_net_lite_model.0{}.h5".format(year, modelnumber[year])
+    modelpath = "./modelfiles/{}/model_checkpoints/particle_net_lite_model.0{}.h5".format(year, modelnumber[year])
     model = keras.models.load_model(modelpath)
 
     return model
@@ -36,19 +35,23 @@ def predict_testset():
     model = load_model()
  
     #eval_path = "preprocessing/ternary_training/{y}/converted/<NameOfYourEvalFile>_0.awkd".format(y=year)
-    eval_path = "preprocessing/ternary_training/{y}/converted/WpWnZ_test_{y}_0.awkd".format(y=year)
+    eval_path = "preprocessing/ternary_training/{y}/Eval/converted/Eval_TTCR_TT_{y}_0.awkd".format(y=year)
     print ("********************* Evaluating {} *****************************".format(eval_path))
     eval_dataset = Dataset(eval_path, data_format='channel_last')
     tagger_output= model.predict(eval_dataset.X)
     print (tagger_output)
-    true_class = np.array([np.argmax(eval_dataset.y, axis=1)]).T
-    predicted_class = np.array([np.argmax(tagger_output, axis=1)]).T
-    nrows, ncolumns = np.shape(tagger_output)
-    predicted_probabilites = []
-    for row in range (nrows):
-        predicted_probabilites.append(tagger_output[row][predicted_class[row]])
+    
+
 
     #Store the predicted output probabilities as a branch back to the root files you started with
+
+    #true_class = np.array([np.argmax(eval_dataset.y, axis=1)]).T
+    #predicted_class = np.array([np.argmax(tagger_output, axis=1)]).T
+    #nrows, ncolumns = np.shape(tagger_output)
+    #predicted_probabilites = []
+    #for row in range (nrows):
+    #    predicted_probabilites.append(tagger_output[row][predicted_class[row]])
+    
     #ofile = TFile.Open('ternary_training/{}/<NameOfYourEvalFile>_test.root'.format(year), "RECREATE")
     #tree = TTree("AnalysisTree", "AnalysisTree") #Replace the correct tree name
     #Wp = array('d', [0])

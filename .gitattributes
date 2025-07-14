@@ -86,3 +86,7 @@ modelfiles/UL18/model_checkpoints/particle_net_lite_model.001.h5 filter=lfs diff
 modelfiles/UL18/model_checkpoints/particle_net_lite_model.014.h5 filter=lfs diff=lfs merge=lfs -text
 modelfiles/UL16postVFP/model_checkpoints/particle_net_lite_model.024.h5 filter=lfs diff=lfs merge=lfs -text
 modelfiles/UL17/model_checkpoints/particle_net_lite_model.006.h5 filter=lfs diff=lfs merge=lfs -text
+modelfiles/UL18/model_checkpoints/ filter=lfs diff=lfs merge=lfs -text
+modelfiles/UL16postVFP/model_checkpoints/ filter=lfs diff=lfs merge=lfs -text
+modelfiles/UL16preVFP/model_checkpoints/ filter=lfs diff=lfs merge=lfs -text
+modelfiles/UL17/model_checkpoints/ filter=lfs diff=lfs merge=lfs -text

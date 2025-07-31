@@ -6,10 +6,12 @@ import optparse
 import pandas as pd
 import numpy as np
 import awkward
-import uproot_methods
+#import uproot_methods
+# Jennet replaces uproot_methods with coffea vector
+from coffea.nanoevents.methods import vector
 from sklearn.preprocessing import MultiLabelBinarizer
 import logging
-logging.basicConfig(level=logging.DEBUG, format='[%(asctime)s] %(levelname)s: %(message)s')
+logging.basicConfig(level=logging.INFO, format='[%(asctime)s] %(levelname)s: %(message)s')
 
 def _transform(dataframe, mode, start=0, stop=-1, jet_size=0.8):
     from collections import OrderedDict
@@ -29,19 +31,30 @@ def _transform(dataframe, mode, start=0, stop=-1, jet_size=0.8):
     mask = _e>0
     n_particles = np.sum(mask, axis=1)
 
-    px = awkward.JaggedArray.fromcounts(n_particles, _px[mask])
-    py = awkward.JaggedArray.fromcounts(n_particles, _py[mask])
-    pz = awkward.JaggedArray.fromcounts(n_particles, _pz[mask])
-    energy = awkward.JaggedArray.fromcounts(n_particles, _e[mask])
-    charge = awkward.JaggedArray.fromcounts(n_particles, _q[mask])
+    px = awkward.Array(_px[mask])
+    py = awkward.Array(_py[mask])
+    pz = awkward.Array(_pz[mask])
+    energy = awkward.Array(_e[mask])
+    charge = awkward.Array(_q[mask])
 
-    p4 = uproot_methods.TLorentzVectorArray.from_cartesian(px, py, pz, energy)
+    p4 = awkward.zip(
+        {
+            "px": px,
+            "py": py,
+            "pz": pz,
+            "E": energy,
+        },
+        with_name="PtEtaPhiMLorentzVector",
+        behavior=vector.behavior,
+    )
+
+#    .TLorentzVectorArray.from_cartesian(px, py, pz, energy)
     pt = p4.pt
 
-    jet_p4 = p4.sum()
+    jet_p4 = p4
 
     # outputs
-    old_label = df['lep_charge']
+    old_label = df['truth_label']
     #if mode == "binary":
     #    new_label = [[1,0] if i == -1 else [0,1] for i in old_label]
     #    new_label = np.array(new_label)
@@ -86,7 +99,7 @@ def _transform(dataframe, mode, start=0, stop=-1, jet_size=0.8):
 
     v['part_raw_etarel'] = (p4.eta - v['jet_eta'])
     _jet_etasign = np.sign(v['jet_eta'])
-    _jet_etasign[_jet_etasign==0] = 1
+#    _jet_etasign[_jet_etasign==0] = 1
     v['part_etarel'] = v['part_raw_etarel'] * _jet_etasign
 
     v['part_phirel'] = p4.delta_phi(jet_p4)
@@ -127,6 +140,6 @@ def convert(source, destdir, basename, mode, step=None, limit=None):
             logging.warning('... file already exist: continue ...')
             continue
         v=_transform(df, mode, start=start, stop=start+step)
-        awkward.save(output, v, mode='x')
+        awkward.to_parquet(v, output)
 
 
